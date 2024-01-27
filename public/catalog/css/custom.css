@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(208, 208, 224);
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #EEE;
+}
+
+footer {
+    border-top: 1px solid #EEE;
+    color: black;
+}
+footer p {
+    color: black;
+}

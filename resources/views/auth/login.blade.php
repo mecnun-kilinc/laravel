@@ -4,9 +4,8 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <div class="card">
-            <div class="card-header bg-transparent border-success">Login</div>
-            <div class="card-body">
+        <h3 class="mb-4 text-center">Login</h3>
+                <div class="bg-light">
                 <form action="{{ route('authenticate') }}" method="post">
                     @csrf
                     <div class="mb-3 row">
@@ -32,7 +31,7 @@
                     </div>
                 </form>
             </div>    
-        </div>               
+                 
     </div>    
 </div>
     

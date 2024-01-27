@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel 10 | {{ $metaTitle }}</title>
     <meta  name="description" content="{{ $metaDescription }}" >
-    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css " rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/catalog/css/custom.css') }}">
 </head>
-<body class="bg-light bg-gradient">
-   <header class="bg-dark  text-white pt-2 pb-4">
+<body>
+   <header class="text-white pt-2 pb-4">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand text-white" href="{{ URL('/') }}">Logo</a>
+          <a class="navbar-brand text-black" href="{{ URL('/') }}">Logo</a>
           <div class="text-end">
             <ul class="navbar-nav">
                 @guest
@@ -20,7 +21,7 @@
                         <a class="btn btn-outline-primary me-2 {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
+                        <a class="btn btn-outline-dark {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
                     </li>
                 @else  
 
@@ -54,9 +55,9 @@
     </div>  
     
     
-    <footer class="bg-dark text-white p-3 pt-5 pb-5">
+    <footer class="text-white p-3 pt-5 pb-5">
         <div class="container text-center">  
-          Footer Block
+          <p>Footer Block</p>
         </div>
     </footer>   
   
