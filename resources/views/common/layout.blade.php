@@ -38,7 +38,7 @@
             @guest
                 
             <a class="btn btn-outline-primary me-2 {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a> 
-            <a class="btn btn-primary{{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
+            <a class="btn btn-warning {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
                 
             @else  
 

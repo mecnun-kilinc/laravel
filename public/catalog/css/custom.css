@@ -8,7 +8,8 @@ header {
 }
 
 footer {
-    background-color: #fff;
+    background: rgb(208,208,224);
+    background: linear-gradient(360deg, rgba(208,208,224,1) 0%, rgba(255,255,255,1) 100%); 
     border-top: 1px solid #EEE;
     color: black;
 }
@@ -120,3 +121,27 @@ footer p {
     }
 
 } 
+
+.login form {
+    background: rgb(240, 240, 240);
+    padding: 50px;
+    border-radius: 10px;
+}
+.login h3 {
+    text-align: center;
+     margin-bottom: 15px;
+  }
+
+.register form {
+    background: rgb(240, 240, 240);
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.register h3 {
+    text-align: center;
+    margin-bottom: 15px;
+ }
+
+
+

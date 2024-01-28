@@ -3,7 +3,7 @@
 @section('content')
 
   <h1 class="text-3xl font-bold underline">
-   <p class="text-center">Merhaba Dünyalı</p>
+   <p class="text-center">Merhaba Dünyalılar</p>
 
    <main>
 
