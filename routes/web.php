@@ -1,12 +1,15 @@
 <?php
-
-use App\Http\Controllers\Home;
+ 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Catalog\Home;
+use App\Http\Controllers\Catalog\User;
+use App\Http\Controllers\Admin\Home as Admin;
 
-Route::get('/', [Home::class,'index'])->name('Home');
+Route::get('/', [Home::class,'index'])->name('home');
 
-Route::controller(UserController::class)->group(function() {
+Route::get('/admin', [Admin::class,'index'])->name('admin');
+
+Route::controller(User::class)->group(function() {
     Route::get('/register', 'register')->name('register');
     Route::post('/registerPost', 'registerPost')->name('registerPost');
     Route::get('/login', 'login')->name('login');
@@ -14,3 +17,4 @@ Route::controller(UserController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+

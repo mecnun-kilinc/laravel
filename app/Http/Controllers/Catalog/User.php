@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Catalog;
 
-use App\Models\User;
+use App\Models\User as UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-class UserController extends Controller {
+class User extends Controller {
  
     public function __construct() {
         $this->middleware('guest')->except(['logout', 'dashboard']);
@@ -23,7 +23,7 @@ class UserController extends Controller {
         ];
 
 
-       return  view('auth.register', $metaData);
+       return  view('catalog.register', $metaData);
 
 
     }
@@ -36,7 +36,7 @@ class UserController extends Controller {
             'password' => 'required|min:8|confirmed'
         ]);
 
-        User::create([
+        UserModel::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -58,7 +58,7 @@ class UserController extends Controller {
     ];
 
 
-        return view('auth.login', $metaData);
+        return view('catalog.login', $metaData);
     }
 
  

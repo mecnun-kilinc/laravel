@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('catalog.layout')
 
 @section('content')
 
