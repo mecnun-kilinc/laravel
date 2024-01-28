@@ -91,7 +91,7 @@ class User extends Controller {
 
 
         if(Auth::check()) {
-            return view('auth.dashboard', $metaData);
+            return view('catalog.dashboard', $metaData);
         }
         
         return redirect()->route('login')
