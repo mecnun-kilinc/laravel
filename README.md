@@ -1,6 +1,5 @@
 
-![Screenshot 2024-01-28 032824](https://github.com/mecnun-kilinc/laravel/assets/112703613/753a93e1-5cb2-4019-847a-fd7758a0ec87)
-
+![Screenshot 2024-02-09 204801](https://github.com/mecnun-kilinc/laravel/assets/112703613/c2a0f7cf-9e61-4e3e-a49c-3a622807b2d9)
 
 
 
