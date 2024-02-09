@@ -32,7 +32,7 @@
 </div>
 </div>
 
-     {{ $results->links('pagination::bootstrap-5') }}
+     {{ $results->withQueryString()->links('pagination::bootstrap-5') }}
 
 </main>
 
