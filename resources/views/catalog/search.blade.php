@@ -2,32 +2,38 @@
 
 @section('content')
 
-  <h1 class="text-3xl font-bold underline">
-   <p class="text-center">Search Results</p>
+   <h3 class="text-center"><span class="badge text-bg-warning">{{  $results->total()  }} </span> records were found related to your search results.</h3>
 
    <main>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+<div class="album py-5">
+<div class="container">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
     @foreach ($results as $result)
 
         <div class="col">
             <div class="card shadow-sm">
-             <img src="{{ asset('public/images/'. $result->photo) }}" class="img-responsive" />
+             <img src="{{ asset('/images/'. $result->photo) }}" class="img-responsive" />
               <div class="card-body">
-                <p>{{$result->description}}</p>
+                <p>{{ substr($result->description,0,80)}}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <small class="text-muted">{{$result->name}}</small>
+                     <div class="btn-group">
+                    <a href="{{$result->id}}" class="btn btn-sm btn-primary"><i class="bi bi-three-dots"></i></a>
                   </div>
-                  <small class="text-muted">{{$result->name}}</small>
+
                 </div>
               </div>
             </div>
           </div>
 
     @endforeach
+</div>
+</div>
+</div>
 
-    </div>
-  </main>
+     {{ $results->links('pagination::bootstrap-5') }}
+
+</main>
 
 @endsection
