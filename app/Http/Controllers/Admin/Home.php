@@ -10,12 +10,12 @@ class Home extends Controller
     public function index() {
 
 
-        $metaData = [
+        $data = [
             'metaTitle' => 'Admin Panel',
             'metaDescription' => 'Admin Panel Description'
         ];
 
-        return view('admin.home', $metaData);
+        return view('admin.home', $data);
 
 
     }

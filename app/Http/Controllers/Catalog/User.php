@@ -19,13 +19,13 @@ class User extends Controller {
 
     public function register() {
 
-        $metaData = [
-                'metaTitle' => 'Register Page Meta',
-                'metaDescription' => 'Register Page Description'
+        $data = [
+                'title' => 'Register Page Meta',
+                'description' => 'Register Page Description'
         ];
 
 
-       return  view('catalog.register', $metaData);
+       return  view('catalog.register', $data);
 
 
     }
@@ -55,13 +55,13 @@ class User extends Controller {
 
     public function login() {
 
-        $metaData = [
-            'metaTitle' => 'Login Page Meta',
-            'metaDescription' => 'Login Page Description'
+        $data = [
+            'title' => 'Login Page Meta',
+            'description' => 'Login Page Description'
     ];
 
 
-        return view('catalog.login', $metaData);
+        return view('catalog.login', $data);
     }
 
 
@@ -84,34 +84,15 @@ class User extends Controller {
     }
 
 
-    public function dashboard(Request $request) {
+    public function dashboard() {
 
-        $metaData = [
-            'metaTitle' => 'Dashboard Meta Title',
-            'metaDescription' => 'Dashboard Description'
+        $data = [
+            'title' => 'Dashboard Meta Title',
+            'description' => 'Dashboard Description'
         ];
 
-        if(Auth::user()) {
 
-            if (Auth::user()->role === "User") {
-                return view('catalog.dashboard', $metaData);
-            }
-
-            if (Auth::user()->role === "Admin") {
-
-                Auth::logout();
-                $request->session()->invalidate();
-                $request->session()->regenerateToken();
-                $request->session()->flush();
-
-               return redirect('/');
-
-
-
-            }
-
-        }
-
+        return view('catalog.dashboard', $data);
 
         return redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.'
             ])->onlyInput('email');

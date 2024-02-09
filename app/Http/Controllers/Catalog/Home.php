@@ -10,12 +10,12 @@ class Home extends Controller {
 
     public function index() {
 
-        $metaData = [
-            'metaTitle' => 'Home Page Meta',
-            'metaDescription' => 'Home Page Description'
+        $data = [
+            'title' => 'Home Page Meta',
+            'description' => 'Home Page Description'
         ];
 
-         return view("catalog.home", $metaData);
+         return view("catalog.home", $data);
 
       }
 
