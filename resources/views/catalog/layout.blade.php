@@ -26,7 +26,7 @@
        <div class="arama">
         <form id="search-form" action="{{ route('search') }}" method="GET">
         <div class="input-group input-group-md">
-            <input type="text" name="q" class="form-control" placeholder="Search">
+            <input type="text" name="q" class="form-control" value=" {{request()->query('q')}}" placeholder="Search">
             <div class="input-group-append">
                <button type="submit"  class="btn btn-primary">Search
                </button>

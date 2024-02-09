@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Articles as ModelArticles;
 use Illuminate\Http\Request;
 
-class Articles extends Controller
-{
+class Articles extends Controller {
 
    public function search (Request $search) {
-
 
     $articles = ModelArticles::search($search);
 
