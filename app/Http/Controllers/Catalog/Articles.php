@@ -28,10 +28,18 @@ class Articles extends Controller
 
 
 
-   public function show (Request $request) {
+   public function show ($id) {
+
+    $result = ModelArticles::show($id);
+
+    $data = [
+        'title' => 'Search Results',
+        'description' => 'Search Results Description',
+        'result' => $result,
+    ];
 
 
-    return "detay";
+   return view("catalog.article", $data);
 
    }
 

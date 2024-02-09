@@ -26,6 +26,16 @@ class Articles extends Model
 
 
 
+    public static function show($id){
+
+        $query = DB::table("articles")->where('id', $id)->first();
+
+        return $query;
+
+
+        }
+
+
 
 
 
