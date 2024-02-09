@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Catalog;
 
-use App\Models\User as UserModel;
 use Illuminate\Http\Request;
+use App\Models\User as UserModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Contracts\Session\Session;
 
 
 class User extends Controller {
- 
+
     public function __construct() {
         $this->middleware('guest')->except(['logout', 'dashboard']);
     }
@@ -19,7 +21,7 @@ class User extends Controller {
 
         $metaData = [
                 'metaTitle' => 'Register Page Meta',
-                'metaDescription' => 'Register Page Description'       
+                'metaDescription' => 'Register Page Description'
         ];
 
 
@@ -27,7 +29,7 @@ class User extends Controller {
 
 
     }
- 
+
     public function registerPost(Request $request) {
 
         $request->validate([
@@ -39,6 +41,7 @@ class User extends Controller {
         UserModel::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => 'User',
             'password' => Hash::make($request->password)
         ]);
 
@@ -49,19 +52,19 @@ class User extends Controller {
 
     }
 
-   
+
     public function login() {
 
         $metaData = [
             'metaTitle' => 'Login Page Meta',
-            'metaDescription' => 'Login Page Description'       
+            'metaDescription' => 'Login Page Description'
     ];
 
 
         return view('catalog.login', $metaData);
     }
 
- 
+
     public function authenticate(Request $request) {
 
         $credentials = $request->validate([
@@ -78,35 +81,54 @@ class User extends Controller {
         return back()->withErrors([
             'email' => 'Your provided credentials do not match in our records.'])->onlyInput('email');
 
-    } 
-    
- 
-    public function dashboard() {
+    }
 
+
+    public function dashboard(Request $request) {
 
         $metaData = [
             'metaTitle' => 'Dashboard Meta Title',
-            'metaDescription' => 'Dashboard Description'       
+            'metaDescription' => 'Dashboard Description'
         ];
 
+        if(Auth::user()) {
 
-        if(Auth::check()) {
-            return view('catalog.dashboard', $metaData);
+            if (Auth::user()->role === "User") {
+                return view('catalog.dashboard', $metaData);
+            }
+
+            if (Auth::user()->role === "Admin") {
+
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                $request->session()->flush();
+
+               return redirect('/');
+
+
+
+            }
+
         }
-        
-        return redirect()->route('login')
-            ->withErrors(['email' => 'Please login to access the dashboard.'
+
+
+        return redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.'
             ])->onlyInput('email');
-    } 
-    
- 
+
+
+    }
+
+
     public function logout(Request $request) {
 
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        $request->session()->flush();
         return redirect()->route('login')->withSuccess('You have logged out successfully!');
-    }    
+
+    }
 
 
 }
