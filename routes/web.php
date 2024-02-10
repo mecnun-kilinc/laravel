@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\Home as Admin;
 
 Route::get('/', [Home::class,'index'])->name('home');
 
-Route::get('/search', [Articles::class,'search'])->name('search');
-Route::get('/article/{id}', [Articles::class,'show'])->name('show');
+Route::controller(Articles::class)->group(function () {
+    Route::get('/search', 'search')->name('search');
+    Route::get('/article/{id}', 'show')->name('show');
+});
 
 Route::controller(User::class)->group(function() {
     Route::get('/register', 'register')->name('register');

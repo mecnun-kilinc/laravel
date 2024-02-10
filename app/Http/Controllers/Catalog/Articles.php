@@ -8,22 +8,19 @@ use Illuminate\Http\Request;
 
 class Articles extends Controller {
 
-   public function search (Request $search) {
+   public function search (Request $request) {
 
-    $articles = ModelArticles::search($search);
+    $articles = ModelArticles::search($request);
 
     $data = [
-        'title' => 'Search Results',
-        'description' => 'Search Results Description',
+        'title' => 'Search Result',
+        'description' => 'Search Result Description',
         'results' => $articles,
     ];
 
-
-   return view("catalog.search", $data);
-
+    return view("catalog.search", $data);
 
    }
-
 
 
    public function show ($id) {
@@ -31,8 +28,8 @@ class Articles extends Controller {
     $result = ModelArticles::show($id);
 
     $data = [
-        'title' => 'Search Results',
-        'description' => 'Search Results Description',
+        'title' => 'Search Result',
+        'description' => 'Search Result Description',
         'result' => $result,
     ];
 

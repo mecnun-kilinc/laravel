@@ -2,7 +2,7 @@
 
 @section('content')
 
-   <h3 class="text-center"><span class="badge text-bg-warning">{{  $results->total()  }} </span> records were found related to your search results.</h3>
+   <h3 class="text-center"><span class="badge text-bg-warning">{{  $results->total()  }} </span> records were found related to your search.</h3>
 
    <main>
 

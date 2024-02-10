@@ -14,9 +14,8 @@ class Articles extends Model
     public static function search($data){
 
 
-    $queries = DB::table("articles")
-    ->where('name', 'LIKE','%'. $data->q .'%')
-    ->orWhere('description', 'LIKE','%'. $data->q .'%')
+    $queries = DB::table("articles")->where('name', 'LIKE','%'. $data .'%')
+    ->orWhere('description', 'LIKE','%'. $data .'%')
     ->paginate(16);
 
     return $queries;
