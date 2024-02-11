@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">{{$result->name}}</small>
                      <div class="btn-group">
-                    <a href="{{ $result->url }}" class="btn btn-sm btn-primary"><i class="bi bi-three-dots"></i></a>
+                    <a href="{{ $result->seo_url }}" class="btn btn-sm btn-primary"><i class="bi bi-three-dots"></i></a>
                   </div>
 
                 </div>

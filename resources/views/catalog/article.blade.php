@@ -28,7 +28,14 @@
             <p>Article {{ $result->id }}</p>
             <p>{{ substr($result->description,0,80)}}</p>
             <small class="text-muted">{{$result->name}}</small>
-        </div>
+            <small class="text-muted">{{ $result->seo_url }}</small>
+            <hr />
+            <div class="btn-group g-3">
+                <button class="btn btn-warning">{{ $result->date_added }}</button>
+           </div>
+            <div class="btn-group g-3">
+                <button class="btn btn-primary">{{ $result->date_modified }}</button>
+           </div>
       </div>
 
     </div>
