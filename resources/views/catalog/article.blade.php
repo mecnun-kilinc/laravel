@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container">
 
 
@@ -14,8 +13,6 @@
       </div>
 
  <br>
-
-
 
       <div class="row align-items-md-stretch">
 

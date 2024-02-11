@@ -10,7 +10,6 @@
 <div class="container">
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
     @foreach ($results as $result)
-
         <div class="col">
             <div class="card shadow-sm">
              <img src="{{ asset('/images/'. $result->photo) }}" class="img-responsive" />
@@ -19,14 +18,13 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">{{$result->name}}</small>
                      <div class="btn-group">
-                    <a href="article/{{ $result->id }}" class="btn btn-sm btn-primary"><i class="bi bi-three-dots"></i></a>
+                    <a href="{{ $result->url }}" class="btn btn-sm btn-primary"><i class="bi bi-three-dots"></i></a>
                   </div>
 
                 </div>
               </div>
             </div>
           </div>
-
     @endforeach
 </div>
 </div>

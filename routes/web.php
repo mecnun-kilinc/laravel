@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Catalog\Home;
 use App\Http\Controllers\Catalog\User;
@@ -10,7 +11,7 @@ Route::get('/', [Home::class,'index'])->name('home');
 
 Route::controller(Articles::class)->group(function () {
     Route::get('/search', 'search')->name('search');
-    Route::get('/article/{id}', 'show')->name('show');
+    Route::get('/{url}', 'show')->name('show');
 });
 
 Route::controller(User::class)->group(function() {
