@@ -29,7 +29,7 @@ class Articles extends Controller {
     $result = ModelArticles::show($id);
 
     $data = [
-        'title' => 'Search Result | '. $result->name,
+        'title' => 'Search Result',
         'description' => 'Search Result Description',
         'result' => $result
     ];

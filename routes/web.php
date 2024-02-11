@@ -9,10 +9,7 @@ use App\Http\Controllers\Admin\Home as Admin;
 
 Route::get('/', [Home::class,'index'])->name('home');
 
-Route::controller(Articles::class)->group(function () {
-    Route::get('/search', 'search')->name('search');
-    Route::get('/{url}', 'show')->name('show');
-});
+
 
 Route::controller(User::class)->group(function() {
     Route::get('/register', 'register')->name('register');
@@ -21,4 +18,9 @@ Route::controller(User::class)->group(function() {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::controller(Articles::class)->group(function () {
+    Route::get('/search', 'search')->name('search');
+    Route::get('/{url}', 'show')->name('show');
 });
