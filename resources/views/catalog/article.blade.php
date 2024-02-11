@@ -27,8 +27,8 @@
             <h3><span class="badge text-bg-warning"> {{  $result->name  }} </span></h3><hr>
             <p>Article {{ $result->id }}</p>
             <p>{{ substr($result->description,0,80)}}</p>
-            <small class="text-muted">{{$result->name}}</small>
-            <small class="text-muted">{{ $result->seo_url }}</small>
+            <small class="text-muted">{{$result->name}}</small><br>
+            <small class="text-muted">{{ url($result->seo_url) }}</small>
             <hr />
             <div class="btn-group g-3">
                 <button class="btn btn-warning">{{ $result->date_added }}</button>
@@ -37,11 +37,12 @@
                 <button class="btn btn-primary">{{ $result->date_modified }}</button>
            </div>
       </div>
-
     </div>
-<br>
+    </div>
 
-      <div class="row align-items-md-stretch">
+    <br>
+
+    <div class="row align-items-md-stretch">
         <div class="col-md-5">
           <div class="h-100 p-5 text-white bg-dark rounded-3">
             <h2>Change the background</h2>
@@ -58,9 +59,9 @@
         </div>
       </div>
 
-<br>
-
-    </div>
 
 
-@endsection
+</div>
+
+
+      @endsection
