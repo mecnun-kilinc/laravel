@@ -7,18 +7,31 @@ class Home extends Controller
 {
 
 
-    public function index() {
+    public function dashboard() {
 
 
-        $data = [
+
+        return "Dashboard";
+   /*
+     $data = [
             'metaTitle' => 'Admin Panel',
             'metaDescription' => 'Admin Panel Description'
-        ];
+     ];
 
         return view('admin.home', $data);
-
-
+    */
     }
+
+
+   public function resimYukle () {
+
+
+    return "Resim Yükle";
+
+
+
+   }
+
 
 
 

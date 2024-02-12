@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Yonetici
 {
@@ -17,10 +18,12 @@ class Yonetici
     public function handle(Request $request, Closure $next)
     {
 
-         dd("Kontrol Yönetici");
-        return $next($request);
+        if(Auth::check() && Auth::user()->role == 'admin') {
+            return $next($request);
+        }
 
 
+       return redirect()->route('login');
 
     }
 }

@@ -19,6 +19,13 @@ Route::controller(User::class)->group(function() {
     Route::post('/logout', 'logout')->name('logout');
 });
 
+
+Route::middleware('admin')->controller(Admin::class)->group(function() {
+Route::get('/admin', 'dashboard');
+Route::get('/admin/resimyukle', 'resimyukle')->name('resimyukle');
+});
+
+
 Route::controller(Articles::class)->group(function () {
     Route::get('/search', 'search')->name('search');
     Route::get('/{url}', 'show')->name('show');

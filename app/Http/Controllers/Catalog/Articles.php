@@ -11,6 +11,8 @@ class Articles extends Controller {
 
    public function search (Request $request) {
 
+    if($request->method() == "GET") {
+
     $articles = ModelArticles::search($request);
 
     $data = [
@@ -18,6 +20,17 @@ class Articles extends Controller {
         'description' => 'Search Result Description',
         'results' => $articles,
     ];
+
+    }  else {
+
+    $data = [
+        'title' => 'Search Result',
+        'description' => 'Search Result Description',
+        'results' => 'No result were found'
+    ];
+
+    }
+
 
     return view("catalog.search", $data);
 
