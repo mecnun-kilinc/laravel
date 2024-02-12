@@ -15,19 +15,11 @@ class Articles extends Controller {
 
     $articles = ModelArticles::search($request);
 
-    $data = [
-        'title' => 'Search Result',
-        'description' => 'Search Result Description',
-        'results' => $articles,
-    ];
-
-    }  else {
-
-    $data = [
-        'title' => 'Search Result',
-        'description' => 'Search Result Description',
-        'results' => 'No result were found'
-    ];
+        $data = [
+            'title' => 'Search Result',
+            'description' => 'Search Result Description',
+            'results' => $articles,
+        ];
 
     }
 
@@ -41,14 +33,24 @@ class Articles extends Controller {
 
     $result = ModelArticles::show($id);
 
-    $data = [
-        'title' => 'Search Result',
-        'description' => 'Search Result Description',
-        'result' => $result
-    ];
+    if ($result) {
+
+        $data = [
+            'title' => 'Search Result',
+            'description' => 'Search Result Description',
+            'result' => $result
+        ];
+
+        return view("catalog.article", $data);
+
+    } else {
+
+       return response()->view("catalog.404", );
+
+    }
 
 
-   return view("catalog.article", $data);
+
 
    }
 

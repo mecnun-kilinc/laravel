@@ -12,14 +12,14 @@ class Home extends Controller
 
 
         return "Dashboard";
-   /*
+
      $data = [
             'metaTitle' => 'Admin Panel',
             'metaDescription' => 'Admin Panel Description'
      ];
 
         return view('admin.home', $data);
-    */
+
     }
 
 
