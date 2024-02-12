@@ -10,9 +10,6 @@ class Home extends Controller
     public function dashboard() {
 
 
-
-        return "Dashboard";
-
      $data = [
             'metaTitle' => 'Admin Panel',
             'metaDescription' => 'Admin Panel Description'
