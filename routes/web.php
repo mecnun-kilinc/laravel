@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\Home as Admin;
 Route::get('/', [Home::class,'index'])->name('home');
 
 
-
 Route::controller(User::class)->group(function() {
     Route::get('/register', 'register')->name('register');
     Route::post('/registerPost', 'registerPost')->name('registerPost');
