@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Filemanager;
 
-class Home extends Controller
-{
+class Home extends Controller {
 
 
-    public function dashboard() {
-
+    public function index() {
 
      $data = [
             'metaTitle' => 'Admin Panel',
@@ -19,15 +19,15 @@ class Home extends Controller
 
     }
 
+    public function upload(Request $upload) {
 
-   public function resimYukle () {
+       $result = Filemanager::upload($upload);
+
+       return response()->json($result);
+
+    }
 
 
-    return "Resim Yükle";
-
-
-
-   }
 
 
 

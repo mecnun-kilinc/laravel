@@ -22,7 +22,13 @@ Route::controller(User::class)->group(function() {
 
 Route::middleware('admin')->controller(Admin::class)->group(function() {
 Route::get('/admin', 'dashboard');
-Route::get('/admin/resimyukle', 'resimyukle')->name('resimyukle');
+
+Route::get('/admin/home', function() {
+ return view('admin.home');
+});
+
+Route::post('/upload', 'upload')->name('upload');
+
 });
 
 
