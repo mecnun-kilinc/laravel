@@ -41,7 +41,7 @@ class User extends Controller {
         UserModel::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => 'User',
+            'is_admin' => 5,
             'password' => Hash::make($request->password)
         ]);
 
@@ -58,7 +58,7 @@ class User extends Controller {
         $data = [
             'title' => 'Login Page Meta',
             'description' => 'Login Page Description'
-    ];
+        ];
 
 
         return view('catalog.login', $data);

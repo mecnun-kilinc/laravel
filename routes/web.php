@@ -15,8 +15,6 @@ Route::get('/search', [Articles::class,'search'])->name('search');
 Route::get('/article/{id}', [Articles::class,'show'])->name('show');
 
 
-
-
 Route::controller(User::class)->group(function() {
     Route::get('/register', 'register')->name('register');
     Route::post('/registerPost', 'registerPost')->name('registerPost');
@@ -24,4 +22,10 @@ Route::controller(User::class)->group(function() {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
+});
+
+
+Route::controller(Admin::class)->group(function() {
+    Route::get('/admin', 'index');
+    Route::get('/admin/articles', 'getArticleList')->middleware('admin');
 });

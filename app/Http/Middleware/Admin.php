@@ -6,22 +6,15 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
+class Admin {
+
     public function handle(Request $request, Closure $next) {
 
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->is_admin === 1) {
             return $next($request);
         } else {
 
-           return redirect('/admin/login');
+           return redirect('/')->with(Auth::logout());
 
         }
 
