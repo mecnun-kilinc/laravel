@@ -16,8 +16,8 @@ class Articles extends Model {
 
 
     $queries = DB::table("articles")
-    ->where('name', 'LIKE','%'. $data->q .'%')
-    ->orWhere('description', 'LIKE','%'. $data->q .'%')
+    ->where('name', 'LIKE','%'. $data->ara .'%')
+    ->orWhere('description', 'LIKE','%'. $data->ara .'%')
     ->paginate(16);
 
     return $queries;

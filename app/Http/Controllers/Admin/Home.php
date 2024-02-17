@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class Home extends Controller {
@@ -21,6 +22,7 @@ class Home extends Controller {
 
     public function getArticleList() {
 
+        DB::find();
 
         $data = [
             'metaTitle' => 'Admin Panel getArticleList',

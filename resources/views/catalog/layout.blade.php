@@ -23,13 +23,24 @@
             </a>
         </div>
 
+
        <div class="arama">
         <form id="search-form" action="{{ route('search') }}" method="GET">
         <div class="input-group input-group-md">
-            <input type="text" name="q" class="form-control" value="{{request()->query('q')}}" placeholder="Search">
+            <input type="text" name="ara" class="form-control" value="{{request()->query('ara')}}"
+
+
+            @if($errors->any())
+            placeholder="Please enter at least 3 characters."
+            @else
+            placeholder="Search"
+            @endif
+            >
             <div class="input-group-append">
-               <button type="submit"  class="btn btn-primary">Search
-               </button>
+
+                <button type="submit"  class="btn btn-primary">Search</button>
+
+
            </div>
         </div>
     </form>
