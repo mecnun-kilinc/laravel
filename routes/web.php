@@ -1,33 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Catalog\Home;
+use App\Http\Controllers\Catalog\User;
+use App\Http\Controllers\Catalog\Articles;
+use App\Http\Controllers\Admin\Home as Admin;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Home::class,'index'])->name('home');
 
 
-Route::get('/admin/login', function () {
-    return "Bu alana ulaşabilmek için giriş yapmalısın..";
-});
 
-Route::middleware('admin')->controller('')->group(function() {
 
-Route::get('/admin', function() {
+Route::get('/search', [Articles::class,'search'])->name('search');
+Route::get('/article/{seourl}', [Articles::class,'show'])->name('show');
 
- return "Admin";
 
-});
 
+
+Route::controller(User::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/registerPost', 'registerPost')->name('registerPost');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::post('/logout', 'logout')->name('logout');
 });
