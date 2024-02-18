@@ -1,2 +1,4 @@
-<h1>Yönetim Paneli</h1>
+@extends('admin.layout')
+@section('content')
 <p>Admin Dashboard</p>
+@endsection

@@ -11,8 +11,8 @@ class Home extends Controller {
 
 
         $data = [
-            'metaTitle' => 'Admin Panel',
-            'metaDescription' => 'Admin Panel Description'
+            'title' => 'Admin Panel',
+            'description' => 'Admin Panel Description'
         ];
 
         return view('admin.home', $data);
@@ -22,11 +22,9 @@ class Home extends Controller {
 
     public function getArticleList() {
 
-        DB::find();
-
         $data = [
-            'metaTitle' => 'Admin Panel getArticleList',
-            'metaDescription' => 'Admin Panel Description getArticleList'
+            'title' => 'Admin Panel getArticleList',
+            'description' => 'Admin Panel Description getArticleList'
         ];
 
         return view('admin.article_list', $data);

@@ -14,7 +14,6 @@ class Articles extends Model {
 
     public static function search($data){
 
-
     $queries = DB::table("articles")
     ->where('name', 'LIKE','%'. $data->ara .'%')
     ->orWhere('description', 'LIKE','%'. $data->ara .'%')

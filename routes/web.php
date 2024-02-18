@@ -13,6 +13,7 @@ Route::get('/search', [Articles::class,'search'])->name('search');
 Route::get('/article/{id}', [Articles::class,'show'])->name('show');
 
 
+
 Route::controller(User::class)->group(function() {
     Route::get('/register', 'register')->name('register');
     Route::post('/registerPost', 'registerPost')->name('registerPost');
@@ -25,5 +26,5 @@ Route::controller(User::class)->group(function() {
 
 Route::controller(Admin::class)->group(function() {
     Route::get('/admin', 'index');
-    Route::get('/admin/articles', 'getArticleList')->middleware('admin');
+    Route::get('/admin/articles', 'getArticleList');
 });
