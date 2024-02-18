@@ -26,13 +26,11 @@
                     <span class="fs-4">Sidebar</span>
                 </a>
                 <br>
-               <div class="">
-                <div class="mobile-toggle sidebar-toggle">
-                  <a href="#" class="text-decoration-none">
-                    <i class="far fa-times-circle"></i>
+                <div class="mobile-toggle sidebar-toggle" style="margin-top: -10px;width:100%;text-align:right">
+                  <a href="/admin" class="text-decoration-none ">
+                    <i class="far fa-times-circle text-white"></i>
                   </a>
                 </div>
-              </div>
             </div>
           </div>
 

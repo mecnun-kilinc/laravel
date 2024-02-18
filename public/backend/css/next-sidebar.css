@@ -115,9 +115,11 @@
 	margin-left: 15px;
 }
 
+
 .sidebar-logo a {
 	display:inline-block;
 }
+
 .sidebar-logo a .logo {
 	background-position:0;
 	background-repeat:no-repeat;
@@ -137,13 +139,7 @@
 {
 	width:120px
 }
-.sidebar-logo .mobile-toggle
-{
-	display:none;
-	float:right;
-	font-size:18px;
-	line-height:64px
-}
+
 
 	@media screen and (max-width:991px)
 {
