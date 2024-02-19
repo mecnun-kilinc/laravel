@@ -37,7 +37,7 @@
           <ul class="sidebar-menu scrollable position-relative pt-3">
 
             <li class="nav-item dropdown">
-                <a class="nav-link wave-effect" href="">
+                <a class="nav-link wave-effect" href="{{ url('/admin') }}">
                 <span class="icon-holder">
                   <i class="fas fa-home"></i>
                 </span>
@@ -45,7 +45,7 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link wave-effect" href="admin/article">
+                <a class="nav-link wave-effect" href="{{ url('/admin/article') }}">
                 <span class="icon-holder">
                   <i class="fas fa-file"></i>
                 </span>
@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link wave-effect" href="admin/reviews">
+              <a class="nav-link wave-effect" href="{{ url('/admin/reviews') }}">
                 <span class="icon-holder">
                   <i class="far fa-star"></i>
                 </span>
@@ -63,7 +63,7 @@
 
 
             <li class="nav-item dropdown">
-                <a class="nav-link wave-effect" href="admin/members">
+                <a class="nav-link wave-effect" href="{{ url('/admin/members') }}">
                 <span class="icon-holder">
                   <i class="fas fa-user"></i>
                 </span>
@@ -89,7 +89,7 @@
 
             @if (Auth::user())
             <li class="nav-item">
-            <a class="btn btn-primary me-2" href="{{ route('dashboard') }}">
+            <a class="btn btn-primary me-2" href="{{ url('/admin/dashboard') }}">
                 {{ Auth::user()->name }}
             </a>
             </li>

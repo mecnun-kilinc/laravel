@@ -4,9 +4,13 @@
   <div class="container">
     <div class="row">
 
+
         <div class="mb-2">
             <div class="container-fluid">
-              <button type="button" form="form-article" formaction="{{ url('admin/article/delete') }}" data-toggle="tooltip" title="Delete" class="btn btn-danger float-end" onclick="confirm('Are you sure') ? $('#form-article').submit() : false;">Delete</button>
+             <div class="btn-group  gap-1 float-end" role="group"">
+              <a href="{{ url('admin/article/add') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+              <button type="button" form="form-article" formaction="{{ url('admin/article/delete') }}" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure') ? $('#form-article').submit() : false;"><i class="fa fa-trash"></i> Delete</button>
+            </div>
              </div>
              <br>
        </div>
