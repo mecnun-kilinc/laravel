@@ -1,11 +1,8 @@
 @extends('catalog.layout')
 
 @section('content')
-
-   <h3 class="text-center"><span class="badge text-bg-warning">{{  $results->total()  }} </span> records were found related to your search results.</h3>
-
-   <main>
-
+<h3 class="text-center"><span class="badge text-bg-warning">{{  $results->total()  }} </span> records were found related to your search results.</h3>
+<main>
 <div class="album py-5">
 <div class="container">
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
@@ -31,9 +28,6 @@
 </div>
 </div>
 </div>
-
-     {{ $results->withQueryString()->links('pagination::bootstrap-5') }}
-
+{{ $results->withQueryString()->links('pagination::bootstrap-5') }}
 </main>
-
 @endsection

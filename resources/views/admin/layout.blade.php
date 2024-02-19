@@ -37,7 +37,7 @@
           <ul class="sidebar-menu scrollable position-relative pt-3">
 
             <li class="nav-item dropdown">
-                <a class="nav-link wave-effect" href="admin/dashboard">
+                <a class="nav-link wave-effect" href="">
                 <span class="icon-holder">
                   <i class="fas fa-home"></i>
                 </span>
@@ -45,7 +45,7 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link wave-effect" href="#">
+                <a class="nav-link wave-effect" href="admin/article">
                 <span class="icon-holder">
                   <i class="fas fa-file"></i>
                 </span>
@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link wave-effect" href="#">
+              <a class="nav-link wave-effect" href="admin/reviews">
                 <span class="icon-holder">
                   <i class="far fa-star"></i>
                 </span>
@@ -63,7 +63,7 @@
 
 
             <li class="nav-item dropdown">
-                <a class="nav-link wave-effect" href="#">
+                <a class="nav-link wave-effect" href="admin/members">
                 <span class="icon-holder">
                   <i class="fas fa-user"></i>
                 </span>
@@ -105,13 +105,14 @@
                 </form>
             @endif
           </ul>
-      </nav>
+         </nav>
 
 
 
       <div class="m-3">
         @yield('content')
-       </div>
+      </div>
+    </div>
 
           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js "></script>

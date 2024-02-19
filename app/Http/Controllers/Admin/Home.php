@@ -20,15 +20,10 @@ class Home extends Controller {
 
     }
 
-    public function getArticleList() {
 
-        $data = [
-            'title' => 'Admin Panel getArticleList',
-            'description' => 'Admin Panel Description getArticleList'
-        ];
+    public function reviews () {
 
-        return view('admin.article_list', $data);
-
+    return 'reviews';
 
     }
 
