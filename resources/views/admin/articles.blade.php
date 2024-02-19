@@ -4,13 +4,32 @@
   <div class="container">
     <div class="row">
 
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="panel-heading mb-2">
-             <div class="col-md-12">
-              <button type="button" form="form-article" formaction="{{ url('admin/article/delete') }}" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure') ? $('#form-article').submit() : false;">Delete</button>
+        <div class="mb-2">
+            <div class="container-fluid">
+              <button type="button" form="form-article" formaction="{{ url('admin/article/delete') }}" data-toggle="tooltip" title="Delete" class="btn btn-danger float-end" onclick="confirm('Are you sure') ? $('#form-article').submit() : false;">Delete</button>
              </div>
-            </div>
+             <br>
+       </div>
+
+
+       @if(session()->has('message'))
+       <div class="mb-2">
+        <div class="container-fluid">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+           {{ session()->get('message') }}
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+        </div>
+       </div>
+       @endif
+
+
+
+
+
+      <div class="panel panel-primary">
+     <div class="panel-body">
+        <div class="container-fluid">
          <form action="{{ url('admin/article/delete') }}" method="post" id="form-article" enctype="multipart/form-data">
            @csrf
             <div class="table-responsive">
@@ -35,20 +54,20 @@
         @endforeach
         </tbody>
       </table>
+     </form>
      </div>
     </div>
-</div>
-    <div class="container-fluid">
 
+       <div class="container-fluid">
             {{ $results->withQueryString()->links('pagination::bootstrap-5') }}
-
         </div>
 
 
+        </div>
+        </div>
     </div>
 
-
-
     </main>
+
 
 @endsection

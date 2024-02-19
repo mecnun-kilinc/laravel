@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Catalog\Home;
 use App\Http\Controllers\Catalog\User;
 use App\Http\Controllers\Catalog\Articles;

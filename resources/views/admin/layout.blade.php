@@ -119,6 +119,10 @@
           <script src="{{ asset('/backend/js/perfect-scrollbar.min.js') }}"></script>
           <script src="{{ asset('/backend/js/next-sidebar.js') }}"></script>
 
-
+          <script>
+            $(".button.close").slideUp(200, function() {
+                $(this).alert('close');
+            });
+        </script>
 </body>
 </html>

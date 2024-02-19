@@ -40,7 +40,9 @@ class AdminArticlesController extends Controller {
 
     public function delete(Request $request) {
 
-        dd($request->selected);
+         $response = AdminArticles::destroy($request->selected);
+
+         return redirect()->back()->with('message', "$response Successfully removed.");
 
     }
 }

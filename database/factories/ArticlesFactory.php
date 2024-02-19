@@ -19,7 +19,7 @@ class ArticlesFactory extends Factory {
             'meta_title' => fake()->text(),
             'meta_description' => fake()->text(),
             'meta_keywords' => fake()->text(),
-            'photo' =>  fake()->image('public/images/articles', 400, 300, null, false),
+            'photo' =>  fake()->image(),
         ];
 
 

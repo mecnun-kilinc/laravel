@@ -38,4 +38,23 @@ class AdminArticles extends Model
             }
 
 
+            public static function destroy($data){
+
+                $deleted = 0;
+
+                 foreach($data as $article_id) {
+
+                  if ($article_id) {
+                    $deleted += DB::table('articles')->where('id', $article_id)->delete();
+                  }
+
+
+                 }
+
+                 return $deleted;
+
+                }
+
+
+
 }
