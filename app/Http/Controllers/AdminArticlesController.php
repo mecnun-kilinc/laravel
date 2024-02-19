@@ -25,19 +25,22 @@ class AdminArticlesController extends Controller {
 
     public function add() {
 
+
     }
 
     public function edit($article_id) {
 
-         dd($article_id);
+      dd($article_id);
+
       return "In this part we will modify existing article";
 
 
     }
 
 
-    public function delete($article_id)
-    {
-        dd("Silerim Bak".$article_id);
+    public function delete(Request $request) {
+
+        dd($request->selected);
+
     }
 }

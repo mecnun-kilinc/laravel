@@ -26,10 +26,10 @@ Route::controller(User::class)->group(function() {
 
 
 
-Route::controller(Admin::class)->group(function() {
-    Route::get('/admin', 'index');
-    Route::get('/admin/article', [AdminArticlesController::class, 'index']);
-    Route::post('/admin/article/add', [AdminArticlesController::class, 'add']);
+
+    Route::get('/admin', [Admin::class, 'index']);
+    Route::get('/admin/article', [AdminArticlesController::class, 'index'])->name('article.index');
+    Route::post('/admin/article/add', [AdminArticlesController::class, 'add'])->name('add');
     Route::get('/admin/article/edit/{article_id}', [AdminArticlesController::class, 'edit']);
-    Route::get('/admin/article/delete/{article_id}', [AdminArticlesController::class, 'delete']);
-});
+    Route::post('/admin/article/delete', [AdminArticlesController::class, 'delete'])->name('delete');
+
