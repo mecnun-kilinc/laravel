@@ -38,18 +38,12 @@
                                     {{ Session::get('error') }}
                                 </div>
                             @endif
-
-
-
                         </div>
-
                             <input type="hidden" name="editor"
                                 value="@isset($result->editor){{ $result->editor }}@endisset">
                             <input type="hidden" name="editor_id"
                                 value="@isset($result->editor_id){{ $result->editor_id }}@endisset">
-
                 </form>
-
                 <div class="mb-2">
                     <div class="container-fluid">
                         <div class="btn-group  gap-1 float-end" role="group"">
