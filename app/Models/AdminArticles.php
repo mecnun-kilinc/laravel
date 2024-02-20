@@ -24,12 +24,28 @@ class AdminArticles extends Model
         return $queries;
     }
 
-    public static function add($id, $data)
+    public static function add()
     {
     }
 
-    public static function edit($id, $data)
+    public static function edit($article_id, $data)
     {
+        $query = DB::table('articles')
+            ->where('id', $article_id)
+            ->update(
+                [
+                    'name' => $data->name,
+                    'seourl' => $data->seourl,
+                    'description' => $data->description,
+                    'meta_title' => $data->meta_title,
+                    'meta_description' => $data->meta_description,
+                    'meta_keywords' => $data->meta_keywords,
+                    'photo' => 'Screenshot 2024-02-08 010129.png',
+                    'updated_at' => now()
+                ]
+            );
+
+        return $query;
     }
 
     public static function getArticle($article_id)
@@ -53,5 +69,14 @@ class AdminArticles extends Model
         }
 
         return $deleted;
+    }
+
+
+
+
+    public static function seoUrlCheck($id, $seoUrl)
+    {
+
+        return DB::select("SELECT * FROM  articles WHERE seourl LIKE '" . $seoUrl . "' AND id != '" . $id . "'");
     }
 }

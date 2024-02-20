@@ -4,16 +4,20 @@
             <div class="row">
                 <form action="{{ url($action) }}" method="post" enctype="multipart/form-data" id="form-article">
                     @csrf
+
+                    <input type="hidden" name="article_id" value="@isset($result->id){{ $result->id }}@endisset">
+
                         <div class="col mb-3 mt-3">
-                            <input class="form-control" id="inputName" type="text" name="name"
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
                                 placeholder="Article Name"
                                 value="@isset($result->name){{ $result->name }}@endisset">
                         </div>
                         <div class="col mb-3 mt-3">
-                            <textarea name="description" cols="30" rows="5" class="form-control" placeholder="Article Description">@isset($result->description){{ $result->description }}@endisset</textarea>
+                            <textarea name="description" cols="30" rows="5" class="form-control"
+                            placeholder="Article Description">@isset($result->description){{ $result->description }}@endisset</textarea>
                         </div>
                         <div class="col mb-3 mt-3">
-                            <input class="form-control" type="text" name="meta_title" placeholder="Article Meta Title"
+                            <input class="form-control @error('meta_title') is-invalid @enderror" type="text" name="meta_title" placeholder="Article Meta Title"
                                 value="@isset($result->meta_title){{ $result->meta_title }}@endisset">
                         </div>
                         <div class="col mb-3 mt-3">
@@ -25,15 +29,28 @@
                                 value="@isset($result->meta_keywords){{ $result->meta_keywords }}@endisset">
                         </div>
                         <div class="col mb-3 mt-3">
-                            <input class="form-control" type="text" name="seourl" placeholder="Article SEO Url"
+                            <input class="form-control @error('seourl') is-invalid @enderror" type="text" name="seourl" placeholder="Article SEO Url"
                                 value="@isset($result->seourl){{ $result->seourl }}@endisset">
+
+
+                                @if (Session::has('error'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
+
+
+
                         </div>
-                        <div class="col mb-3 mt-3">
-                            <input type="text" placeholder="editor Name" name="editor"
+
+                            <input type="hidden" name="editor"
                                 value="@isset($result->editor){{ $result->editor }}@endisset">
-                            <input type="text" placeholder="editor Id" name="editor_id"
+                            <input type="hidden" name="editor_id"
                                 value="@isset($result->editor_id){{ $result->editor_id }}@endisset">
-                        </div>
+
+
+
+
                         <div class="col mb-3 mt-3">
                             <input class="form-control" type="file" name="photo"
                                 value="@isset($result->photo){{ $result->photo }}@endisset">
@@ -52,4 +69,13 @@
 
             </div>
         </div>
+
+
+
+
+
+
+
+
 @endsection
+

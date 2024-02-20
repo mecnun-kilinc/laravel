@@ -66,9 +66,22 @@ class AdminArticlesController extends Controller
     public function editArticle(Request $request)
     {
 
-        dd($request);
+        $seoUrlKontrolu = AdminArticles::seoUrlCheck($request->article_id, $request->seourl);
 
-        //  return redirect()->back()->with('message', "Edit");
+        if ($seoUrlKontrolu) {
+
+            return redirect()->back()->with('error', 'Already in use.');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:255',
+            'description' => 'required',
+            'meta_title'  => 'required|max:70',
+        ]);
+
+        AdminArticles::edit($request->article_id, $request);
+
+        return redirect()->back()->with('message', "Successfully");
     }
 
     public function delete(Request $request)
@@ -76,6 +89,6 @@ class AdminArticlesController extends Controller
 
         $response = AdminArticles::destroy($request->selected);
 
-        return redirect()->back()->with('message', "$response Successfully removed.");
+        return redirect()->back()->with('message', "Number of effected rows $response Successfully removed.");
     }
 }
