@@ -56,7 +56,7 @@ class AdminArticlesController extends Controller
     public function addArticle(Request $request)
     {
 
-         // NOTE Normal şartlarda bu alana yetkisiz kişiler ulaşamaz ama biz ulaşanlarıda kontrol edelim.
+        // NOTE Normal şartlarda bu alana yetkisiz kişiler ulaşamaz ama biz ulaşanlarıda kontrol edelim.
         // TODO İçeriği ekleyenin yetkisi varmı bakılacak yapılacak
 
         $seoUrlKontrolu = AdminArticles::seoUrlCheck($request->article_id, $request->seourl);
@@ -75,7 +75,6 @@ class AdminArticlesController extends Controller
         AdminArticles::add($request);
 
         return redirect()->route('article.index');
-
     }
 
     public function editArticle(Request $request)
@@ -106,6 +105,6 @@ class AdminArticlesController extends Controller
         // TODO Birden fazla editör veya Yöneticiler için: Sildiği içerik kendisinemi ait kontrolü yapılabilir.
         $response = AdminArticles::destroy($request->selected);
 
-        return redirect()->back()->with('message', "Number of effected rows $response Successfully removed.");
+        return redirect()->back()->with('message', "Successfully removed.");
     }
 }

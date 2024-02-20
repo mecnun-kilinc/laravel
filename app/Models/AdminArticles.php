@@ -27,7 +27,8 @@ class AdminArticles extends Model
     public static function add($data)
     {
         $query = DB::table('articles')
-            ->insert([
+            ->insert(
+                [
                     'name' => $data->name,
                     'editor' => Auth::user()->name,
                     'editor_id' => Auth::user()->id,
@@ -42,8 +43,6 @@ class AdminArticles extends Model
             );
 
         return $query;
-
-
     }
 
     public static function edit($article_id, $data)
@@ -77,24 +76,19 @@ class AdminArticles extends Model
     public static function destroy($data)
     {
 
-        $deleted = 0;
-
         foreach ($data as $article_id) {
 
             if ($article_id) {
-                $deleted += DB::table('articles')->where('id', $article_id)->delete();
+                DB::table('articles')->where('id', $article_id)->delete();
             }
         }
 
-        return $deleted;
+        return true;
     }
-
-
 
 
     public static function seoUrlCheck($id, $seoUrl)
     {
-
         return DB::select("SELECT * FROM  articles WHERE seourl LIKE '" . $seoUrl . "' AND id != '" . $id . "'");
     }
 }
