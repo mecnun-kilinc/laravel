@@ -24,8 +24,26 @@ class AdminArticles extends Model
         return $queries;
     }
 
-    public static function add()
+    public static function add($data)
     {
+        $query = DB::table('articles')
+            ->insert([
+                    'name' => $data->name,
+                    'editor' => Auth::user()->name,
+                    'editor_id' => Auth::user()->id,
+                    'seourl' => $data->seourl,
+                    'description' => $data->description,
+                    'meta_title' => $data->meta_title,
+                    'meta_description' => $data->meta_description,
+                    'meta_keywords' => $data->meta_keywords,
+                    'photo' => 'Screenshot 2024-02-08 010129.png',
+                    'updated_at' => now()
+                ]
+            );
+
+        return $query;
+
+
     }
 
     public static function edit($article_id, $data)

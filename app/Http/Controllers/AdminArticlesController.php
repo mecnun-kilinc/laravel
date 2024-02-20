@@ -59,8 +59,23 @@ class AdminArticlesController extends Controller
     public function addArticle(Request $request)
     {
 
-        dd("addArticle");
-        // return redirect()->back()->with('message', "Add");
+        $seoUrlKontrolu = AdminArticles::seoUrlCheck($request->article_id, $request->seourl);
+
+        if ($seoUrlKontrolu) {
+
+            return redirect()->back()->with('error', 'Already in use.');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:255',
+            'description' => 'required',
+            'meta_title'  => 'required|max:70',
+        ]);
+
+        AdminArticles::add($request);
+
+        return redirect()->back()->with('message', "Successfully");
+
     }
 
     public function editArticle(Request $request)
