@@ -74,7 +74,7 @@ class AdminArticlesController extends Controller
 
         AdminArticles::add($request);
 
-        return redirect()->back()->with('message', "Successfully");
+        return redirect()->route('article.index');
 
     }
 
@@ -97,7 +97,7 @@ class AdminArticlesController extends Controller
 
         AdminArticles::edit($request->article_id, $request);
 
-        return redirect()->back()->with('message', "Successfully");
+        return redirect()->route('article.index');
     }
 
     public function delete(Request $request)
