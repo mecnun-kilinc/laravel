@@ -13,7 +13,7 @@
                                 value="@isset($result->name){{ $result->name }}@endisset">
                         </div>
                         <div class="col mb-3 mt-3">
-                            <textarea name="description" cols="30" rows="5" class="form-control"
+                            <textarea name="description" id="editor" cols="30" rows="20" class="form-control"
                             placeholder="Article Description">@isset($result->description){{ $result->description }}@endisset</textarea>
                         </div>
                         <div class="col mb-3 mt-3">
@@ -48,13 +48,6 @@
                             <input type="hidden" name="editor_id"
                                 value="@isset($result->editor_id){{ $result->editor_id }}@endisset">
 
-
-
-
-                        <div class="col mb-3 mt-3">
-                            <input class="form-control" type="file" name="photo"
-                                value="@isset($result->photo){{ $result->photo }}@endisset">
-                        </div>
                 </form>
 
                 <div class="mb-2">
@@ -72,7 +65,16 @@
 
 
 
-
+        <script>
+            ClassicEditor
+                    .create( document.querySelector( '#editor' ) )
+                    .then( editor => {
+                            console.log( editor );
+                    } )
+                    .catch( error => {
+                            console.error( error );
+                    } );
+    </script>
 
 
 

@@ -8,12 +8,69 @@
     <meta  name="description" content="Admin" >
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('/backend/css/next-sidebar.css') }}" />
     <link rel="stylesheet" href="{{ asset('/backend/css/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/examples/sidebars/sidebars.css" />
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+        var seourl = $("input[name=seourl]");
+        if(!seourl.val())
+        {
+          $("input[name='name']").keyup(function()
+          {
+            var SEOlink = $("input[name='name']").val();
+
+            // var SEOlink = $(this).val();
+              SEOlink = SEOlink.replace(/^\s+|\s+$/g, '');
+              SEOlink = SEOlink.toLowerCase();
+              var from = "şığöüç·/_,:;";
+              var to = "sigouc------";
+
+            for (var i=0, l=from.length ; i<l ; i++)
+            {
+              SEOlink = SEOlink.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            SEOlink = SEOlink.replace(/[^a-z0-9( -]/g, '') 	// remove invalid chars
+            .replace(/\(/g,"-")							 	// replace (
+            .replace(/\s+/g, '-') 							// collapse whitespace and replace by -
+            .replace(/-+/g, '-'); 							// collapse dashes
+            // return SEOlink;
+
+            // model
+            if ($("input[name^='editor_id']").length){
+
+                var editorID = $("input[name^='editor_id']").val();
+                editorID = editorID.replace(/^\s+|\s+$/g, ''); // trim
+                editorID = editorID.toLowerCase();
+
+              for (var i=0, l=from.length ; i<l ; i++)
+              {
+                editorID = editorID.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+              }
+              editorID = editorID.replace(/[^a-z0-9 -]/g, '')
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-');
+            }
+
+            if (editorID)
+            {
+                seourl.val(SEOlink+'-'+editorID);
+            } else
+            {
+                seourl.val(SEOlink);
+            }
+          });
+        }
+      });
+        </script>
+
+
 </head>
 <body class="app">
 
@@ -96,7 +153,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="btn btn-warning" href="{{ route('logout') }}"
+              <a class="btn btn-warning me-2" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"
                 >Logout</a>
@@ -105,6 +162,10 @@
                     @csrf
                 </form>
             @endif
+
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{{ url('/') }}" target="_blank"><i class="fa fa-home"></i></a>
+            </li>
           </ul>
          </nav>
 
