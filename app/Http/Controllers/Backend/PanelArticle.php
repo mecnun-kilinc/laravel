@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\AdminArticles;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\PanelArticleModel as model;
 
-class AdminArticlesController extends Controller
-{
+class PanelArticle extends Controller {
 
 
     public function index(Request $request)
     {
 
-        $articles = AdminArticles::search($request);
+        $articles = model::search($request);
 
         $data = [
             'title' => 'Admin Article List',
@@ -31,7 +31,7 @@ class AdminArticlesController extends Controller
             'title' => 'Admin Article List',
             'description' => 'Admin Article List Description',
             'result' => [],
-            'action' => '/admin/article/addArticle'
+            'action' => '/panel/article/addArticle'
         ];
 
 
@@ -41,13 +41,13 @@ class AdminArticlesController extends Controller
     public function edit($article_id)
     {
 
-        $article = AdminArticles::getArticle($article_id);
+        $article = model::getArticle($article_id);
 
         $data = [
             'title' => 'Admin Article List',
             'description' => 'Admin Article List Description',
             'result' => $article,
-            'action' => '/admin/article/editArticle'
+            'action' => '/panel/article/editArticle'
         ];
 
         return view('admin.article_form', $data);
@@ -59,7 +59,7 @@ class AdminArticlesController extends Controller
         // NOTE Normal şartlarda bu alana yetkisiz kişiler ulaşamaz ama biz ulaşanlarıda kontrol edelim.
         // TODO İçeriği ekleyenin yetkisi varmı bakılacak yapılacak
 
-        $seoUrlKontrolu = AdminArticles::seoUrlCheck($request->article_id, $request->seourl);
+        $seoUrlKontrolu = model::seoUrlCheck($request->article_id, $request->seourl);
 
         if ($seoUrlKontrolu) {
 
@@ -72,7 +72,7 @@ class AdminArticlesController extends Controller
             'meta_title'  => 'required|max:70',
         ]);
 
-        AdminArticles::add($request);
+        model::add($request);
 
         return redirect()->route('article.index');
     }
@@ -81,7 +81,7 @@ class AdminArticlesController extends Controller
     {
 
         // TODO Birden fazla editör veya Yöneticiler için: Düzenlendiği içerik kendisinemi ait kontrolü yapılabilir.
-        $seoUrlKontrolu = AdminArticles::seoUrlCheck($request->article_id, $request->seourl);
+        $seoUrlKontrolu = model::seoUrlCheck($request->article_id, $request->seourl);
 
         if ($seoUrlKontrolu) {
 
@@ -94,7 +94,7 @@ class AdminArticlesController extends Controller
             'meta_title'  => 'required|max:70',
         ]);
 
-        AdminArticles::edit($request->article_id, $request);
+        model::edit($request->article_id, $request);
 
         return redirect()->route('article.index');
     }
@@ -103,8 +103,10 @@ class AdminArticlesController extends Controller
     {
 
         // TODO Birden fazla editör veya Yöneticiler için: Sildiği içerik kendisinemi ait kontrolü yapılabilir.
-        $response = AdminArticles::destroy($request->selected);
+        $response = model::destroy($request->selected);
 
         return redirect()->back()->with('message', "Successfully removed.");
     }
+
+
 }

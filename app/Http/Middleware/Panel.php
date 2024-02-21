@@ -6,21 +6,15 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Admin {
+class Panel {
 
     public function handle(Request $request, Closure $next) {
 
-        if (Auth::check() && Auth::user()->is_admin === 1) {
+     if(Auth::check() && Auth::user()->is_admin == 1) {
             return $next($request);
-        } else {
-
-           return redirect('/')->with(Auth::logout());
-
         }
 
-
-
+        return redirect()->route('login')->with(Auth::logout());
     }
-
 
 }

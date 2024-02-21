@@ -8,8 +8,8 @@
         <div class="mb-2">
             <div class="container-fluid">
              <div class="btn-group  gap-1 float-end" role="group"">
-              <a href="{{ url('admin/article/add') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
-              <button type="button" form="form-article" formaction="{{ url('admin/article/delete') }}" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure') ? $('#form-article').submit() : false;"><i class="fa fa-trash"></i> Delete</button>
+              <a href="{{ url('panel/article/add') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+              <button type="button" form="form-article" formaction="{{ url('panel/article/delete') }}" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure') ? $('#form-article').submit() : false;"><i class="fa fa-trash"></i> Delete</button>
             </div>
              </div>
              <br>
@@ -34,7 +34,7 @@
       <div class="panel panel-primary">
      <div class="panel-body">
         <div class="container-fluid">
-         <form action="{{ url('admin/article/delete') }}" method="post" id="form-article" enctype="multipart/form-data">
+         <form action="{{ url('panel/article/delete') }}" method="post" id="form-article" enctype="multipart/form-data">
            @csrf
             <div class="table-responsive">
         <table class="table table-bordered table-hover">

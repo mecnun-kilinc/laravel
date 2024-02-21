@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Backend;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class Home extends Controller {
-
 
     public function index() {
 
@@ -17,7 +17,6 @@ class Home extends Controller {
 
         return view('admin.home', $data);
 
-
     }
 
 
@@ -27,7 +26,11 @@ class Home extends Controller {
 
     }
 
+    public function login () {
 
+        return 'login';
+
+        }
 
 
 

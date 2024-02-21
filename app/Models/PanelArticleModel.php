@@ -3,21 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Facades\Auth;
 
-class AdminArticles extends Model
+class PanelArticleModel extends Model
 {
+    use HasFactory;
 
     public static function search($data = array())
     {
 
 
         $queries = DB::table("articles")
-            ->where('name', 'LIKE', '%' . $data->ara . '%')
+            ->where('name', 'LIKE', '%' . $data . '%')
             //  ->where('editor_id', Auth::user()->id)
-            ->orWhere('description', 'LIKE', '%' . $data->ara . '%')
+            ->orWhere('description', 'LIKE', '%' . $data . '%')
 
             ->paginate(5);
 
@@ -91,4 +93,7 @@ class AdminArticles extends Model
     {
         return DB::select("SELECT * FROM  articles WHERE seourl LIKE '" . $seoUrl . "' AND id != '" . $id . "'");
     }
+
+
+
 }
