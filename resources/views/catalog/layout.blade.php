@@ -11,77 +11,86 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-   <header class="text-white">
-
-    <div class="container">
-
-        <div class="header-menu">
-
-        <div class="logo">
-            <a href="{{ URL('/') }}">
-                <img src="{{ asset('images/logo.png') }}" class="img-fluid float-start" />
-            </a>
-        </div>
 
 
-       <div class="arama">
-        <form id="search-form" action="{{ route('search') }}" method="GET">
-        <div class="input-group input-group-md">
-            <input type="text" name="ara" class="form-control" value="{{request()->query('ara')}}"
 
 
-            @if($errors->any())
-            placeholder="Please enter at least 3 characters."
-            @else
-            placeholder="Search"
-            @endif
-            >
-            <div class="input-group-append">
-
-                <button type="submit"  class="btn btn-primary">Search</button>
+    @if (request()->path() != 'login')
 
 
-           </div>
-        </div>
-    </form>
-       </div>
+        <header class="text-white">
 
-       <div class="uye">
-            @guest
-            <a class="btn btn-outline-primary me-2 {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
-            <a class="btn btn-warning {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
-            @else
+            <div class="container">
 
-                    <a class="btn btn-primary me-2" href="{{ route('dashboard') }}">
-                        {{ Auth::user()->name }}
+                <div class="header-menu">
+
+                <div class="logo">
+                    <a href="{{ URL('/') }}">
+                        <img src="{{ asset('images/logo.png') }}" class="img-fluid float-start" />
                     </a>
-
-                        <a class="btn btn-warning" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
-                        >Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            @csrf
-                        </form>
+                </div>
 
 
-            @endguest
-        </ul>
-       </div>
+               <div class="arama">
+                <form id="search-form" action="{{ route('search') }}" method="GET">
+                <div class="input-group input-group-md">
+                    <input type="text" name="ara" class="form-control" value="{{request()->query('ara')}}"
 
-      </div>
 
- </div>
-   </header>
+                    @if($errors->any())
+                    placeholder="Please enter at least 3 characters."
+                    @else
+                    placeholder="Search"
+                    @endif
+                    >
+                    <div class="input-group-append">
+
+                        <button type="submit"  class="btn btn-primary">Search</button>
+
+
+                   </div>
+                </div>
+            </form>
+               </div>
+
+               <div class="uye">
+                    @guest
+                    <a class="btn btn-outline-primary me-2 {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-warning {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
+                    @else
+
+                            <a class="btn btn-primary me-2" href="{{ route('dashboard') }}">
+                                {{ Auth::user()->name }}
+                            </a>
+
+                                <a class="btn btn-warning" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"
+                                >Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
+
+
+                    @endguest
+                </ul>
+               </div>
+
+              </div>
+
+            </div>
+           </header>
+
+           @endif
+
+
+
+
 
     <div class="container  p-3 pt-5 pb-5">
         @yield('content')
     </div>
-    <footer class="text-white p-3 pt-5 pb-5">
-        <div class="container text-center">
-          <p>Footer Block</p>
-        </div>
-    </footer>
+
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js "></script>
 
 </body>
