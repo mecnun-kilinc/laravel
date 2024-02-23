@@ -22,7 +22,7 @@ class AdminAuthController extends Controller
         if(auth()->guard('admin')->attempt(['email' => $request->input('email'),  'password' => $request->input('password')])){
             $user = auth()->guard('admin')->user();
             if($user->is_admin == 1){
-                return redirect()->route('')->with('success','You are Logged in sucessfully.');
+                return redirect()->route('/admin')->with('success','You are Logged in sucessfully.');
             }
         }else {
             return back()->with('error','Whoops! invalid email and password.');

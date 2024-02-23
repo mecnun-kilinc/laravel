@@ -11,7 +11,11 @@ class AdminAuthenticated
 
     public function handle(Request $request, Closure $next)
     {
+
+        dd($next($request));
+        dd("Selammmm");
         if (Auth::guard('admin')->user()) {
+
             return $next($request);
         }
         if ($request->ajax() || $request->wantsJson()) {

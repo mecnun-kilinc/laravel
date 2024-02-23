@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PanelArticleModel as model;
 
-class PanelArticle extends Controller {
+class Article extends Controller {
 
 
     public function index(Request $request)

@@ -3,26 +3,26 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Home;
-use App\Http\Controllers\Admin\PanelArticle;
+use App\Http\Controllers\Admin\Article;
 use App\Http\Controllers\Admin\AdminAuthController;
-
-
-
 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/login', [AdminAuthController::class, 'getLogin'])->name('adminLogin');
     Route::post('/login', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost');
 
-    Route::group(['middleware' => 'adminauth'], function () {
+    Route::middleware('adminauth')->group(function () {
 
-        Route::get('/admin', [Home::class, 'index']);
-        Route::get('/admin/article', [PanelArticle::class, 'index']);
-        Route::get('/admin/article/add', [PanelArticle::class, 'add']);
-        Route::get('/admin/article/edit/{article_id}', [PanelArticle::class, 'edit']);
-        Route::post('/admin/article/addArticle', [PanelArticle::class, 'addArticle']);
-        Route::post('/admin/article/editArticle', [PanelArticle::class, 'editArticle']);
-        Route::post('/admin/article/delete', [PanelArticle::class, 'delete']);
+    Route::get('/admin', [Home::class, 'index'])->name('home');
+
+    Route::controller(Article::class)->group(function() {
+        Route::get('/admin/article', 'index');
+        Route::get('/admin/article/add', 'add');
+        Route::get('/admin/article/edit/{article_id}', 'edit');
+        Route::post('/admin/article/addArticle', 'addArticle');
+        Route::post('/admin/article/editArticle', 'editArticle');
+        Route::post('/admin/article/delete', 'delete');
+    });
 
 
     });
