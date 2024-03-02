@@ -19,3 +19,5 @@ Route::controller(User::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+dd("ad");

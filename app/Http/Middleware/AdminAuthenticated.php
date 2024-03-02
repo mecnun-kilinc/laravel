@@ -13,7 +13,7 @@ class AdminAuthenticated
     {
 
         dd($next($request));
-        dd("Selammmm");
+
         if (Auth::guard('admin')->user()) {
 
             return $next($request);
